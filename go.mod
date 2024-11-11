@@ -40,6 +40,7 @@ require (
 	golang.org/x/net v0.18.0
 	golang.org/x/sync v0.4.0
 	golang.org/x/term v0.14.0
+	golang.org/x/time v0.4.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20231012201019-e917dd12ba7a
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1
 	gopkg.in/yaml.v3 v3.0.1
@@ -73,7 +74,6 @@ require (
 	go.opentelemetry.io/contrib/propagators/jaeger v1.17.0 // indirect
 	go.opentelemetry.io/contrib/propagators/ot v1.17.0 // indirect
 	go.uber.org/mock v0.3.0 // indirect
-	golang.org/x/time v0.4.0 // indirect
 	google.golang.org/genproto v0.0.0-20231002182017-d307bd883b97 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20231012201019-e917dd12ba7a // indirect
 )

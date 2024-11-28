@@ -41,6 +41,7 @@ func (WebSocketRateLimit) CaddyModule() caddy.ModuleInfo {
 }
 
 func (m *WebSocketRateLimit) Provision(ctx caddy.Context) error {
+	m.logger = ctx.Logger(m)
 	if m.TimeWindow == 0 {
 		m.TimeWindow = 60
 	}
@@ -54,7 +55,6 @@ func (m *WebSocketRateLimit) Provision(ctx caddy.Context) error {
 		m.DownByteRate = 0
 		m.logger.Debug("downstream rate limit is disable")
 	}
-	m.logger = ctx.Logger(m)
 	m.logger.Debug("Init WebSocketRateLimit",
 		zap.Int64("up_byte_rate", m.UpByteRate),
 		zap.Int64("up_burst_limit", m.UpBurstLimit),

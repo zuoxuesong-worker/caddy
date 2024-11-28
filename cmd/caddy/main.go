@@ -33,6 +33,9 @@ import (
 
 	// plug in Caddy modules here
 	_ "github.com/caddyserver/caddy/v2/modules/standard"
+	_ "github.com/caddyserver/caddy/v2/modules/websocketratelimit"
+	_ "github.com/liuzhen21/caddy-jwt"
+	_ "github.com/mholt/caddy-l4"
 )
 
 func main() {

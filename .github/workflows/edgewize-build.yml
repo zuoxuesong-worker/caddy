@@ -44,4 +44,4 @@ jobs:
 
       - name: Run Build
         run: |
-          docker build -f Dockerfile . --push --tag ${{ vars.IMAGE_REPO }}/edgewize/caddy:${{ env.branch }}-${{ env.suffix }}
+          docker build -f Dockerfile . --tag ${{ vars.IMAGE_REPO }}/edgewize/caddy:${{ env.branch }}-${{ env.suffix }} --push

@@ -1,33 +1,17 @@
-name: Cross-Build
+name: EdgeWize-Build
 
 on:
   push:
     branches:
       - edgewize
       - master
-      - 2.*
   pull_request:
     branches:
       - edgewize
       - master
-      - 2.*
 
 jobs:
-  cross-build-test:
-    strategy:
-      fail-fast: false
-      matrix:
-        goos:
-          - 'linux'
-        go:
-          - '1.21'
-
-        include:
-          # Set the minimum Go patch version for the given Go minor
-          # Usable via ${{ matrix.GO_SEMVER }}
-          - go: '1.21'
-            GO_SEMVER: '~1.21.0'
-
+  edgewize-build:
     runs-on: self-hosted
     steps:
       - name: Checkout code

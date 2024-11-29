@@ -1,0 +1,35 @@
+name: EdgeWize-Build
+
+on:
+  push:
+    branches:
+      - edgewize
+      - master
+  pull_request:
+    branches:
+      - edgewize
+      - master
+
+jobs:
+  edgewize-build:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log into registry
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ vars.DOCKER_USERNAME }} --password-stdin ${{ vars.IMAGE_REPO }}
+
+      - name: Declare some variables
+        shell: bash
+        run: |
+          echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> "$GITHUB_ENV"
+          echo "suffix=$(git rev-parse --short "$GITHUB_SHA")" >> "$GITHUB_ENV"
+
+      - name: Run Build
+        run: |
+          docker build -f Dockerfile . --tag ${{ vars.IMAGE_REPO }}/edgewize/caddy:${{ env.branch }}-${{ env.suffix }}
+
+      - name: Run Push
+        run: |
+          docker push ${{ vars.IMAGE_REPO }}/edgewize/caddy:${{ env.branch }}-${{ env.suffix }}

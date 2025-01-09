@@ -36,8 +36,5 @@ jobs:
 
       - name: Run Build
         run: |
-          docker buildx build --platform linux/amd64,linux/arm64 -f Dockerfile . --tag ${{ vars.IMAGE_REPO }}/edgewize/caddy:${{ env.branch }}-${{ env.suffix }}
+          docker buildx build --platform linux/amd64,linux/arm64 --push -f Dockerfile . --tag ${{ vars.IMAGE_REPO }}/edgewize/caddy:${{ env.branch }}-${{ env.suffix }}
 
-      - name: Run Push
-        run: |
-          docker push ${{ vars.IMAGE_REPO }}/edgewize/caddy:${{ env.branch }}-${{ env.suffix }}
